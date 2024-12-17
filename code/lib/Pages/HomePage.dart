@@ -140,17 +140,20 @@ class _HomePageState extends State<HomePage> {
             child: FloatingActionButton(
               onPressed: () => displayAddPlayerDialog(context),
               tooltip: 'Spieler hinzufügen',
-              child: const Icon(Icons.add),
+              child: const Icon(
+                Icons.person_add,
+                size: 35,
+                color: Colors.black,
+              ),
             ),
           ),
           Positioned(
             bottom: 16,
             right: 80, // Adjust the distance between the buttons
             child: FloatingActionButton(
-              onPressed: () => displayAddBattleDialog(context),
-              tooltip: 'Kampf eintragen',
-              child: const Icon(Icons.edit),
-            ),
+                onPressed: () => displayAddBattleDialog(context),
+                tooltip: 'Kampf eintragen',
+                child: Image.asset("images/battle_icon.png")),
           ),
         ],
       ),
