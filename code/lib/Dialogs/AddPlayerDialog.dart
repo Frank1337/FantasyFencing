@@ -1,18 +1,17 @@
+import 'package:code/Dialogs/PlayerDialogBase.dart';
 import 'package:code/Enumerations/Weapons.dart';
 import 'package:code/Models/Player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AddPlayerDialog extends StatefulWidget {
-  final List<Player> playerList;
-
-  const AddPlayerDialog({super.key, required this.playerList});
+class AddPlayerDialog extends PlayerDialogBase {
+  const AddPlayerDialog({super.key, required super.playerList});
 
   @override
-  State<AddPlayerDialog> createState() => __AddPlayerDialogState();
+  State<AddPlayerDialog> createState() => _AddPlayerDialogState();
 }
 
-class __AddPlayerDialogState extends State<AddPlayerDialog> {
+class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _expController = TextEditingController();
   final TextEditingController _killsController = TextEditingController();
@@ -35,34 +34,8 @@ class __AddPlayerDialogState extends State<AddPlayerDialog> {
         exp: exp,
         kills: kills,
       ));
-      _sortPlayersByKills();
+      sortPlayersByKills();
     });
-  }
-
-  void _sortPlayersByKills() {
-    widget.playerList.sort((a, b) {
-      if (b.kills != a.kills) {
-        return b.kills.compareTo(a.kills);
-      } else {
-        return b.exp.compareTo(a.exp);
-      }
-    });
-
-    int currentRank = 1;
-    for (int i = 0; i < widget.playerList.length; i++) {
-      if (i > 0 &&
-          (widget.playerList[i].kills != widget.playerList[i - 1].kills ||
-              widget.playerList[i].exp != widget.playerList[i - 1].exp)) {
-        currentRank = i + 1;
-      }
-      widget.playerList[i] = Player(
-        rang: currentRank,
-        name: widget.playerList[i].name,
-        waffe: widget.playerList[i].waffe,
-        exp: widget.playerList[i].exp,
-        kills: widget.playerList[i].kills,
-      );
-    }
   }
 
   @override
