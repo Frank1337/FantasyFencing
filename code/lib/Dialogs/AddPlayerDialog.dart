@@ -25,14 +25,17 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
     super.dispose();
   }
 
-  void _addPlayer(String name, Weapons waffe, int exp, int kills) {
+  void _addPlayer(String name, Weapons waffe, int? exp, int? kills) {
     setState(() {
       widget.playerList.add(Player(
         rang: widget.playerList.length + 1,
         name: name,
         waffe: waffe,
-        exp: exp,
-        kills: kills,
+        exp: exp ??
+            widget.playerList
+                .map((player) => player.exp)
+                .reduce((a, b) => a < b ? a : b),
+        kills: kills ?? 0,
       ));
       sortPlayersByKills();
     });
@@ -149,8 +152,8 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
                       _addPlayer(
                         _nameController.text,
                         _selectedWeapon!,
-                        int.parse(_expController.text),
-                        int.parse(_killsController.text),
+                        int.tryParse(_expController.text),
+                        int.tryParse(_killsController.text),
                       );
                     }
                   : null,
