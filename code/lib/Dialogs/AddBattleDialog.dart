@@ -130,7 +130,9 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
                       _selectedWinner = newValue;
                     });
                   },
-                  items: widget.playerList.map((Player player) {
+                  items: widget.playerList
+                      .where((player) => player.name != _selectedLoser)
+                      .map((Player player) {
                     return DropdownMenuItem<String>(
                       value: player.name,
                       child: Text(player.name),
@@ -153,7 +155,9 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
                       _selectedLoser = newValue;
                     });
                   },
-                  items: widget.playerList.map((Player player) {
+                  items: widget.playerList
+                      .where((player) => player.name != _selectedWinner)
+                      .map((Player player) {
                     return DropdownMenuItem<String>(
                       value: player.name,
                       child: Text(player.name),
