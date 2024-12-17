@@ -30,6 +30,6 @@ class Player {
   }
 
   int get HP {
-    return 3 + lv;
+    return 2 + lv;
   }
 }
