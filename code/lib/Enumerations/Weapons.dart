@@ -18,7 +18,7 @@ extension WeaponsExtension on Weapons {
       case Weapons.Felsenschwert:
         return 'Felsenschwert';
       case Weapons.Basiliskenklaue:
-        return 'Basliskenklaue';
+        return 'Basiliskenklaue';
       case Weapons.Nachtdolch:
         return 'Nachtdolch';
       case Weapons.Eisenfaust:
@@ -42,7 +42,7 @@ extension WeaponsExtension on Weapons {
         return Weapons.Blutduerster;
       case 'Felsenschwert':
         return Weapons.Felsenschwert;
-      case 'Basliskenklaue':
+      case 'Basiliskenklaue':
         return Weapons.Basiliskenklaue;
       case 'Nachtdolch':
         return Weapons.Nachtdolch;

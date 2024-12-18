@@ -48,96 +48,99 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
         'Neuen Fantasy Fencer hinzufügen',
         style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
       ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              const Text('Name:',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                    hintText: 'Name eingeben',
-                    hintStyle: TextStyle(color: Colors.grey[400]),
-                  ),
-                  onChanged: (text) {
-                    setState(() {});
-                  },
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text('Waffe:',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(width: 10),
-              Expanded(
-                child: DropdownButton<Weapons>(
-                  value: _selectedWeapon,
-                  isExpanded: true,
-                  hint: Text(
-                    'Waffe wählen',
-                    style: TextStyle(color: Colors.grey[400]),
-                  ),
-                  onChanged: (Weapons? newValue) {
-                    setState(() {
-                      _selectedWeapon = newValue;
-                    });
-                  },
-                  items: Weapons.values.map((Weapons weapon) {
-                    return DropdownMenuItem<Weapons>(
-                      value: weapon,
-                      child: Text(weapon.name),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text('EXP:', style: TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  controller: _expController,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ],
-                  decoration: InputDecoration(
-                    hintText: 'EXP eingeben',
-                    hintStyle: TextStyle(color: Colors.grey[400]),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                const Text('Name:',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                      hintText: 'Name eingeben',
+                      hintStyle: TextStyle(color: Colors.grey[400]),
+                    ),
+                    onChanged: (text) {
+                      setState(() {});
+                    },
                   ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              const Text('Kills:',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  controller: _killsController,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ],
-                  decoration: InputDecoration(
-                    hintText: 'Kills eingeben',
-                    hintStyle: TextStyle(color: Colors.grey[400]),
+              ],
+            ),
+            Row(
+              children: [
+                const Text('Waffe:',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: DropdownButton<Weapons>(
+                    value: _selectedWeapon,
+                    isExpanded: true,
+                    hint: Text(
+                      'Waffe wählen',
+                      style: TextStyle(color: Colors.grey[400]),
+                    ),
+                    onChanged: (Weapons? newValue) {
+                      setState(() {
+                        _selectedWeapon = newValue;
+                      });
+                    },
+                    items: Weapons.values.map((Weapons weapon) {
+                      return DropdownMenuItem<Weapons>(
+                        value: weapon,
+                        child: Text(weapon.name),
+                      );
+                    }).toList(),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+            Row(
+              children: [
+                const Text('EXP:',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    controller: _expController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                    decoration: InputDecoration(
+                      hintText: 'EXP eingeben',
+                      hintStyle: TextStyle(color: Colors.grey[400]),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Text('Kills:',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    controller: _killsController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                    decoration: InputDecoration(
+                      hintText: 'Kills eingeben',
+                      hintStyle: TextStyle(color: Colors.grey[400]),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       actions: <Widget>[
         ElevatedButton(
