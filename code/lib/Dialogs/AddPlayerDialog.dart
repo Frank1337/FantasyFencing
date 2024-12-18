@@ -28,14 +28,23 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
 
   void _addPlayer(String name, Weapons waffe, int? exp, int? kills) {
     setState(() {
+      int expToAdd = 0;
+
+      if (widget.playerList.isEmpty && (exp == null)) {
+        expToAdd = 0;
+      } else if (exp == null) {
+        expToAdd = widget.playerList
+            .map((player) => player.exp)
+            .reduce((a, b) => a < b ? a : b);
+      } else {
+        expToAdd = exp;
+      }
+
       widget.playerList.add(Player(
         rang: widget.playerList.length + 1,
         name: name,
         waffe: waffe,
-        exp: exp ??
-            widget.playerList
-                .map((player) => player.exp)
-                .reduce((a, b) => a < b ? a : b),
+        exp: expToAdd,
         kills: kills ?? 0,
       ));
       sortPlayersByKills();

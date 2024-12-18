@@ -1,10 +1,9 @@
 import 'package:fantasy_fencing/Dialogs/AddBattleDialog.dart';
 import 'package:fantasy_fencing/Dialogs/AddPlayerDialog.dart';
+import 'package:fantasy_fencing/Dialogs/WeaponInformationDialog.dart';
+import 'package:fantasy_fencing/Enumerations/Weapons.dart';
 import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
-
-import '../Dialogs/WeaponInformationDialog.dart';
-import '../Enumerations/Weapons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,33 +16,33 @@ class _HomePageState extends State<HomePage> {
   final double _tableContentRowHeight = 40;
   final double _tableHeaderRowHeight = 40;
   final List<Player> _playerList = [
-    Player(
-        rang: 1, name: 'Alice', waffe: Weapons.Blutduerster, exp: 0, kills: 5),
-    Player(
-        rang: 2, name: 'Bob', waffe: Weapons.Felsenschwert, exp: 1, kills: 5),
-    Player(
-        rang: 3,
-        name: 'Charlie',
-        waffe: Weapons.Basiliskenklaue,
-        exp: 2,
-        kills: 5),
-    Player(rang: 4, name: 'David', waffe: Weapons.Nachtdolch, exp: 2, kills: 5),
-    Player(
-        rang: 5, name: 'Eve', waffe: Weapons.Phoenixzepter, exp: 4, kills: 1),
-    Player(rang: 6, name: 'Frank', waffe: Weapons.Eisenfaust, exp: 5, kills: 0),
-    Player(
-        rang: 7, name: 'Grace', waffe: Weapons.GaiasKetten, exp: 6, kills: 6),
-    Player(
-        rang: 8, name: 'Heidi', waffe: Weapons.Windfaecher, exp: 7, kills: 7),
-    Player(rang: 9, name: 'Ivan', waffe: Weapons.Nebelstab, exp: 8, kills: 8),
-    Player(
-        rang: 10, name: 'Judy', waffe: Weapons.Felsenschwert, exp: 9, kills: 9),
-    Player(
-        rang: 11,
-        name: 'Kevin',
-        waffe: Weapons.Felsenschwert,
-        exp: 10,
-        kills: 10),
+    //   Player(
+    //       rang: 1, name: 'Alice', waffe: Weapons.Blutduerster, exp: 0, kills: 5),
+    //   Player(
+    //       rang: 2, name: 'Bob', waffe: Weapons.Felsenschwert, exp: 1, kills: 5),
+    //   Player(
+    //       rang: 3,
+    //       name: 'Charlie',
+    //       waffe: Weapons.Basiliskenklaue,
+    //       exp: 2,
+    //       kills: 5),
+    //   Player(rang: 4, name: 'David', waffe: Weapons.Nachtdolch, exp: 2, kills: 5),
+    //   Player(
+    //       rang: 5, name: 'Eve', waffe: Weapons.Phoenixzepter, exp: 4, kills: 1),
+    //   Player(rang: 6, name: 'Frank', waffe: Weapons.Eisenfaust, exp: 5, kills: 0),
+    //   Player(
+    //       rang: 7, name: 'Grace', waffe: Weapons.GaiasKetten, exp: 6, kills: 6),
+    //   Player(
+    //       rang: 8, name: 'Heidi', waffe: Weapons.Windfaecher, exp: 7, kills: 7),
+    //   Player(rang: 9, name: 'Ivan', waffe: Weapons.Nebelstab, exp: 8, kills: 8),
+    //   Player(
+    //       rang: 10, name: 'Judy', waffe: Weapons.Felsenschwert, exp: 9, kills: 9),
+    //   Player(
+    //       rang: 11,
+    //       name: 'Kevin',
+    //       waffe: Weapons.Felsenschwert,
+    //       exp: 10,
+    //       kills: 10),
   ];
 
   void displayWeaponInformationDialog(BuildContext context, Weapons? weapon) {
