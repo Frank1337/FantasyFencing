@@ -3,6 +3,7 @@ import 'package:fantasy_fencing/Dialogs/AddPlayerDialog.dart';
 import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
 
+import '../Dialogs/WeaponInformationDialog.dart';
 import '../Enumerations/Weapons.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,6 +45,21 @@ class _HomePageState extends State<HomePage> {
         exp: 10,
         kills: 10),
   ];
+
+  void displayWeaponInformationDialog(BuildContext context, Weapons? weapon) {
+    if (weapon == null) {
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return WeaponInformationDialog(
+          weapon: weapon,
+        );
+      },
+    );
+  }
 
   void displayAddPlayerDialog(BuildContext context) {
     showDialog(
@@ -192,11 +208,17 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             TableCell(
-                              child: Container(
-                                height: _tableContentRowHeight,
-                                alignment: Alignment.center,
-                                child: Text(player.waffe.name,
-                                    style: TextStyle(color: Colors.white)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  displayWeaponInformationDialog(
+                                      context, player.waffe);
+                                },
+                                child: Container(
+                                  height: _tableContentRowHeight,
+                                  alignment: Alignment.center,
+                                  child: Text(player.waffe.name,
+                                      style: TextStyle(color: Colors.white)),
+                                ),
                               ),
                             ),
                             TableCell(

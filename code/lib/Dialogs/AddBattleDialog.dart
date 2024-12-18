@@ -271,7 +271,7 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
           Row(
             children: [
               const Text(
-                'Sieger:',
+                'Sieger:    ',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(width: 10),
