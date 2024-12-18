@@ -1,6 +1,5 @@
 import 'package:fantasy_fencing/Dialogs/AddBattleDialog.dart';
 import 'package:fantasy_fencing/Dialogs/AddPlayerDialog.dart';
-import 'package:fantasy_fencing/Enumerations/Weapons.dart';
 import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final double _tableContentRowHeight = 40;
+  final double _tableHeaderRowHeight = 40;
   final List<Player> _playerList = [
     // Player(
     //     rang: 1, name: 'Alice', waffe: Weapons.Blutduerster, exp: 0, kills: 5),
@@ -105,71 +106,114 @@ class _HomePageState extends State<HomePage> {
                   },
                   border: TableBorder.all(color: Colors.white),
                   children: [
-                    const TableRow(
-                      decoration: BoxDecoration(color: Colors.transparent),
+                    TableRow(
+                      decoration:
+                          const BoxDecoration(color: Colors.transparent),
                       children: [
-                        TableCell(
-                            child: Center(
-                                child: Text('Rang',
-                                    style: TextStyle(color: Colors.white)))),
-                        TableCell(
-                            child: Center(
-                                child: Text('Name',
-                                    style: TextStyle(color: Colors.white)))),
-                        TableCell(
-                            child: Center(
-                                child: Text('Waffe',
-                                    style: TextStyle(color: Colors.white)))),
-                        TableCell(
-                            child: Center(
-                                child: Text('Lv',
-                                    style: TextStyle(color: Colors.white)))),
-                        TableCell(
-                            child: Center(
-                                child: Text('HP',
-                                    style: TextStyle(color: Colors.white)))),
-                        TableCell(
-                            child: Center(
-                                child: Text('EXP',
-                                    style: TextStyle(color: Colors.white)))),
-                        TableCell(
-                            child: Center(
-                                child: Text('Kills',
-                                    style: TextStyle(color: Colors.white)))),
+                        Container(
+                          height: _tableHeaderRowHeight,
+                          child: TableCell(
+                              child: Center(
+                                  child: Text('Rang',
+                                      style: TextStyle(color: Colors.white)))),
+                        ),
+                        Container(
+                          height: _tableHeaderRowHeight,
+                          child: const TableCell(
+                              child: Center(
+                                  child: Text('Name',
+                                      style: TextStyle(color: Colors.white)))),
+                        ),
+                        Container(
+                          height: _tableHeaderRowHeight,
+                          child: const TableCell(
+                              child: Center(
+                                  child: Text('Waffe',
+                                      style: TextStyle(color: Colors.white)))),
+                        ),
+                        Container(
+                          height: _tableHeaderRowHeight,
+                          child: const TableCell(
+                              child: Center(
+                                  child: Text('Lv',
+                                      style: TextStyle(color: Colors.white)))),
+                        ),
+                        Container(
+                          height: _tableHeaderRowHeight,
+                          child: const TableCell(
+                              child: Center(
+                                  child: Text('HP',
+                                      style: TextStyle(color: Colors.white)))),
+                        ),
+                        Container(
+                          height: _tableHeaderRowHeight,
+                          child: const TableCell(
+                              child: Center(
+                                  child: Text('EXP',
+                                      style: TextStyle(color: Colors.white)))),
+                        ),
+                        Container(
+                          height: _tableHeaderRowHeight,
+                          child: const TableCell(
+                              child: Center(
+                                  child: Text('Kills',
+                                      style: TextStyle(color: Colors.white)))),
+                        ),
                       ],
                     ),
                     ..._playerList.map((player) {
                       return TableRow(
                         decoration: BoxDecoration(color: Colors.transparent),
                         children: [
-                          TableCell(
-                              child: Center(
-                                  child: Text(player.rang.toString(),
-                                      style: TextStyle(color: Colors.white)))),
-                          TableCell(
-                              child: Center(
-                                  child: Text(player.name,
-                                      style: TextStyle(color: Colors.white)))),
-                          TableCell(
-                              child: Center(
-                                  child: Text(player.waffe.name,
-                                      style: TextStyle(color: Colors.white)))),
-                          TableCell(
-                              child: Center(
-                                  child: Text(player.lv.toString(),
-                                      style: TextStyle(color: Colors.white)))),
-                          TableCell(
-                              child: Center(
-                                  child: Text(player.HP.toString(),
-                                      style: TextStyle(color: Colors.white)))),
-                          TableCell(
-                              child: Center(
-                                  child: Text(player.exp.toString(),
-                                      style: TextStyle(color: Colors.white)))),
-                          TableCell(
-                              child: Center(
-                                  child: Text(player.kills.toString(),
-                                      style: TextStyle(color: Colors.white)))),
+                          Container(
+                            height: _tableContentRowHeight,
+                            child: Center(
+                              child: Text(player.rang.toString(),
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                          Container(
+                            height: _tableContentRowHeight,
+                            child: Center(
+                              child: Text(player.name,
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                          Container(
+                            height: _tableContentRowHeight,
+                            child: Center(
+                              child: Text(player.waffe.name,
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                          Container(
+                            height: _tableContentRowHeight,
+                            child: Center(
+                              child: Text(player.lv.toString(),
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                          Container(
+                            height: _tableContentRowHeight,
+                            child: Center(
+                              child: Text(player.HP.toString(),
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                          Container(
+                            height: _tableContentRowHeight,
+                            child: Center(
+                              child: Text(player.exp.toString(),
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                          Container(
+                            height: _tableContentRowHeight,
+                            child: Center(
+                              child: Text(player.kills.toString(),
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
                         ],
                       );
                     }),

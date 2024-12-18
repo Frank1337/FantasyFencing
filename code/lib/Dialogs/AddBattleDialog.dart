@@ -137,9 +137,6 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
                       const SizedBox(height: 10),
                       Text(
                         "${winner.name} kämpft jetzt mit ${loser.waffe.name} und ${loser.name} mit ${winner.waffe.name}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                     ],
                     if (lvlUpWInner) ...[
@@ -220,9 +217,6 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
                                   const SizedBox(height: 10),
                                   Text(
                                     "${winner.name} kämpft jetzt mit ${loser.waffe.name} und ${loser.name} mit ${winner.waffe.name}",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                   ),
                                 ],
                                 if (lvlUpLoser) ...[
