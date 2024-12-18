@@ -46,7 +46,7 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
     return AlertDialog(
       title: const Text(
         'Neuen Fantasy Fencer hinzufügen',
-        style: TextStyle(color: Colors.green),
+        style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,

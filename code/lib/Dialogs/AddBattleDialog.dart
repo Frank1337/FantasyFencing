@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:code/Dialogs/PlayerDialogBase.dart';
+import 'package:code/Enumerations/Buffs.dart';
 import 'package:code/Models/Player.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +33,7 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
           loserExpGain += 1;
         }
 
-        widget.playerList[widget.playerList.indexOf(winner)] = Player(
+        Player newWinner = Player(
           rang: winner.rang,
           name: winner.name,
           waffe: winner.waffe,
@@ -38,7 +41,7 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
           kills: winner.kills + 1,
         );
 
-        widget.playerList[widget.playerList.indexOf(loser)] = Player(
+        Player newLoser = Player(
           rang: loser.rang,
           name: loser.name,
           waffe: loser.waffe,
@@ -46,15 +49,88 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
           kills: loser.kills,
         );
 
+        widget.playerList[widget.playerList.indexOf(winner)] = newWinner;
+        widget.playerList[widget.playerList.indexOf(loser)] = newLoser;
         sortPlayersByKills();
+
+        bool lvlUpWInner = winner.lv < newWinner.lv;
+        bool lvlUpLoser = loser.lv < newLoser.lv;
+
+        // Get random Buffs
+        Buffs winnerBuff = BuffsExtension.getRandomBuff();
+        Buffs? loserBuff;
+        final random = Random();
+        if (random.nextDouble() <= 0.6) {
+          loserBuff = BuffsExtension.getRandomBuff();
+        }
 
         // Show winner dialog
         showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text(winner.name),
-              content: Text('EXP gained: $winnerExpGain'),
+              title: Text(
+                "Herzlichen Glückwunsch ${winner.name}",
+                style: const TextStyle(
+                    color: Colors.green, fontWeight: FontWeight.bold),
+              ),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Dein Bonus:",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text('EXP gained: +$winnerExpGain'),
+                    Text("Kills: +1 (Total ${newWinner.kills})"),
+                    if (newWinner.lv % 2 == 0) ...[
+                      const Text("Vollheilung durch gerades lvl up!"),
+                    ],
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Dein Buff fürs nächste Gefecht:",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '${winnerBuff.type}: ',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          TextSpan(
+                            text: winnerBuff.description,
+                            style: const TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (lvlUpWInner) ...[
+                      const SizedBox(height: 10),
+                      Text(
+                        "Level up! Du bist jetzt Level ${newWinner.lv} und hast ${newWinner.HP} max. HP",
+                        style: TextStyle(
+                          color: Colors.yellow[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
               actions: <Widget>[
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -68,8 +144,67 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text(loser.name),
-                          content: Text('EXP gained: $loserExpGain'),
+                          title: Text("Herzlichen Glückwunsch ${loser.name}",
+                              style: const TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold)),
+                          content: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "Dein Bonus:",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Text('EXP gained: +$loserExpGain'),
+                                Text(
+                                    "Wiederbelebung: Du hast wieder ${newLoser.HP} HP"),
+                                if (loserBuff != null) ...[
+                                  const SizedBox(height: 10),
+                                  const Text(
+                                    "Dein Buff fürs nächste Gefecht:",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: '${loserBuff.type}: ',
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: loserBuff.description,
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                                if (lvlUpLoser) ...[
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    "Level up! Du bist jetzt Level ${newLoser.lv} und hast ${newLoser.HP} HP",
+                                    style: TextStyle(
+                                      color: Colors.yellow[800],
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ]
+                              ],
+                            ),
+                          ),
                           actions: <Widget>[
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -101,7 +236,7 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
     return AlertDialog(
       title: const Text(
         'Neuen Kampf eintragen',
-        style: TextStyle(color: Colors.green),
+        style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
