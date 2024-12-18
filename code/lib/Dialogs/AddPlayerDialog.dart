@@ -1,4 +1,5 @@
 import 'package:fantasy_fencing/Dialogs/PlayerDialogBase.dart';
+import 'package:fantasy_fencing/Dialogs/WeaponInformationDialog.dart';
 import 'package:fantasy_fencing/Enumerations/Weapons.dart';
 import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,21 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
       ));
       sortPlayersByKills();
     });
+  }
+
+  void displayWeaponInformationDialog(BuildContext context, Weapons? weapon) {
+    if (weapon == null) {
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return WeaponInformationDialog(
+          weapon: weapon,
+        );
+      },
+    );
   }
 
   @override
@@ -96,6 +112,12 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
                       );
                     }).toList(),
                   ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.info_outline, color: Colors.green),
+                  onPressed: () {
+                    displayWeaponInformationDialog(context, _selectedWeapon);
+                  },
                 ),
               ],
             ),
