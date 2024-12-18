@@ -53,13 +53,15 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
         children: [
           Row(
             children: [
-              const Text('Name:'),
+              const Text('Name:',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(width: 10),
               Expanded(
                 child: TextField(
                   controller: _nameController,
-                  decoration: const InputDecoration(
-                    hintText: 'Name',
+                  decoration: InputDecoration(
+                    hintText: 'Name eingeben',
+                    hintStyle: TextStyle(color: Colors.grey[400]),
                   ),
                   onChanged: (text) {
                     setState(() {});
@@ -70,12 +72,17 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
           ),
           Row(
             children: [
-              const Text('Waffe:'),
+              const Text('Waffe:',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(width: 10),
               Expanded(
                 child: DropdownButton<Weapons>(
                   value: _selectedWeapon,
-                  hint: const Text('Waffe wählen'),
+                  isExpanded: true,
+                  hint: Text(
+                    'Waffe wählen',
+                    style: TextStyle(color: Colors.grey[400]),
+                  ),
                   onChanged: (Weapons? newValue) {
                     setState(() {
                       _selectedWeapon = newValue;
@@ -93,7 +100,7 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
           ),
           Row(
             children: [
-              const Text('EXP:'),
+              const Text('EXP:', style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(width: 10),
               Expanded(
                 child: TextField(
@@ -102,8 +109,9 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly
                   ],
-                  decoration: const InputDecoration(
-                    hintText: 'EXP',
+                  decoration: InputDecoration(
+                    hintText: 'EXP eingeben',
+                    hintStyle: TextStyle(color: Colors.grey[400]),
                   ),
                 ),
               ),
@@ -111,7 +119,8 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
           ),
           Row(
             children: [
-              const Text('Kills:'),
+              const Text('Kills:',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(width: 10),
               Expanded(
                 child: TextField(
@@ -120,8 +129,9 @@ class _AddPlayerDialogState extends PlayerDialogBaseState<AddPlayerDialog> {
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly
                   ],
-                  decoration: const InputDecoration(
-                    hintText: 'Kills',
+                  decoration: InputDecoration(
+                    hintText: 'Kills eingeben',
+                    hintStyle: TextStyle(color: Colors.grey[400]),
                   ),
                 ),
               ),

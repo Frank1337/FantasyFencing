@@ -1,6 +1,6 @@
 import 'package:code/Dialogs/PlayerDialogBase.dart';
-import 'package:code/Enumerations/Weapons.dart';
 import 'package:code/Models/Player.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class AddBattleDialog extends PlayerDialogBase {
@@ -16,24 +16,13 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
 
   void _updateBattleResults(String winnerName, String loserName) {
     setState(() {
-      Player winner = widget.playerList.firstWhere(
-          (player) => player.name == winnerName,
-          orElse: () => Player(
-              rang: 0,
-              name: '',
-              waffe: Weapons.Felsenschwert,
-              exp: 0,
-              kills: 0));
-      Player loser = widget.playerList.firstWhere(
-          (player) => player.name == loserName,
-          orElse: () => Player(
-              rang: 0,
-              name: '',
-              waffe: Weapons.Felsenschwert,
-              exp: 0,
-              kills: 0));
+      Player? winner = widget.playerList.firstWhereOrNull(
+        (player) => player.name == winnerName,
+      );
+      Player? loser = widget.playerList
+          .firstWhereOrNull((player) => player.name == loserName);
 
-      if (winner.name.isNotEmpty && loser.name.isNotEmpty) {
+      if (winner != null && loser != null) {
         int winnerExpGain = loser.lv;
         int loserExpGain = (winner.lv / 2).floor();
 
@@ -119,12 +108,19 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
         children: [
           Row(
             children: [
-              const Text('Sieger:'),
+              const Text(
+                'Sieger:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               const SizedBox(width: 10),
               Expanded(
                 child: DropdownButton<String>(
                   value: _selectedWinner,
-                  hint: const Text('Sieger wählen'),
+                  isExpanded: true,
+                  hint: Text(
+                    'Sieger wählen',
+                    style: TextStyle(color: Colors.grey[400]),
+                  ),
                   onChanged: (String? newValue) {
                     setState(() {
                       _selectedWinner = newValue;
@@ -144,12 +140,17 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
           ),
           Row(
             children: [
-              const Text('Verlierer:'),
+              const Text(
+                'Verlierer:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               const SizedBox(width: 10),
               Expanded(
                 child: DropdownButton<String>(
                   value: _selectedLoser,
-                  hint: const Text('Verlierer wählen'),
+                  isExpanded: true,
+                  hint: Text('Verlierer wählen',
+                      style: TextStyle(color: Colors.grey[400])),
                   onChanged: (String? newValue) {
                     setState(() {
                       _selectedLoser = newValue;
