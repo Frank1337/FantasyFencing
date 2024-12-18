@@ -3,7 +3,7 @@ import 'package:fantasy_fencing/Enumerations/Weapons.dart';
 class Player {
   final int rang;
   final String name;
-  final Weapons waffe;
+  Weapons waffe;
   final int exp;
   final int kills;
 

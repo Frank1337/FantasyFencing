@@ -1,9 +1,9 @@
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:fantasy_fencing/Dialogs/PlayerDialogBase.dart';
 import 'package:fantasy_fencing/Enumerations/Buffs.dart';
 import 'package:fantasy_fencing/Models/Player.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class AddBattleDialog extends PlayerDialogBase {
@@ -49,10 +49,6 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
           kills: loser.kills,
         );
 
-        widget.playerList[widget.playerList.indexOf(winner)] = newWinner;
-        widget.playerList[widget.playerList.indexOf(loser)] = newLoser;
-        sortPlayersByKills();
-
         bool lvlUpWInner = winner.lv < newWinner.lv;
         bool lvlUpLoser = loser.lv < newLoser.lv;
 
@@ -63,6 +59,25 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
         if (random.nextDouble() <= 0.6) {
           loserBuff = BuffsExtension.getRandomBuff();
         }
+
+        bool waffentauschWinner = winnerBuff == Buffs.Waffentausch;
+        bool waffentauschLoser = loserBuff == Buffs.Waffentausch;
+
+        if (waffentauschWinner) {
+          final temp = newWinner.waffe;
+          newWinner.waffe = newLoser.waffe;
+          newLoser.waffe = temp;
+        }
+
+        if (waffentauschLoser) {
+          final temp = newWinner.waffe;
+          newWinner.waffe = newLoser.waffe;
+          newLoser.waffe = temp;
+        }
+
+        widget.playerList[widget.playerList.indexOf(winner)] = newWinner;
+        widget.playerList[widget.playerList.indexOf(loser)] = newLoser;
+        sortPlayersByKills();
 
         // Show winner dialog
         showDialog(
@@ -118,6 +133,15 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
                         ],
                       ),
                     ),
+                    if (waffentauschWinner) ...[
+                      const SizedBox(height: 10),
+                      Text(
+                        "${winner.name} kämpft jetzt mit ${loser.waffe.name} und ${loser.name} mit ${winner.waffe.name}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                     if (lvlUpWInner) ...[
                       const SizedBox(height: 10),
                       Text(
@@ -189,6 +213,15 @@ class _AddBattleDialogState extends PlayerDialogBaseState<AddBattleDialog> {
                                           ),
                                         ),
                                       ],
+                                    ),
+                                  ),
+                                ],
+                                if (waffentauschLoser) ...[
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    "${winner.name} kämpft jetzt mit ${loser.waffe.name} und ${loser.name} mit ${winner.waffe.name}",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ],
