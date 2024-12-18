@@ -3,6 +3,8 @@ import 'package:fantasy_fencing/Dialogs/AddPlayerDialog.dart';
 import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
 
+import '../Enumerations/Weapons.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -14,33 +16,33 @@ class _HomePageState extends State<HomePage> {
   final double _tableContentRowHeight = 40;
   final double _tableHeaderRowHeight = 40;
   final List<Player> _playerList = [
-    // Player(
-    //     rang: 1, name: 'Alice', waffe: Weapons.Blutduerster, exp: 0, kills: 5),
-    // Player(
-    //     rang: 2, name: 'Bob', waffe: Weapons.Felsenschwert, exp: 1, kills: 5),
-    // Player(
-    //     rang: 3,
-    //     name: 'Charlie',
-    //     waffe: Weapons.Basiliskenklaue,
-    //     exp: 2,
-    //     kills: 5),
-    // Player(rang: 4, name: 'David', waffe: Weapons.Nachtdolch, exp: 2, kills: 5),
-    // Player(
-    //     rang: 5, name: 'Eve', waffe: Weapons.Phoenixzepter, exp: 4, kills: 1),
-    // Player(rang: 6, name: 'Frank', waffe: Weapons.Eisenfaust, exp: 5, kills: 0),
-    // Player(
-    //     rang: 7, name: 'Grace', waffe: Weapons.GaiasKetten, exp: 6, kills: 6),
-    // Player(
-    //     rang: 8, name: 'Heidi', waffe: Weapons.Windfaecher, exp: 7, kills: 7),
-    // Player(rang: 9, name: 'Ivan', waffe: Weapons.Nebelstab, exp: 8, kills: 8),
-    // Player(
-    //     rang: 10, name: 'Judy', waffe: Weapons.Felsenschwert, exp: 9, kills: 9),
-    // Player(
-    //     rang: 11,
-    //     name: 'Kevin',
-    //     waffe: Weapons.Felsenschwert,
-    //     exp: 10,
-    //     kills: 10),
+    Player(
+        rang: 1, name: 'Alice', waffe: Weapons.Blutduerster, exp: 0, kills: 5),
+    Player(
+        rang: 2, name: 'Bob', waffe: Weapons.Felsenschwert, exp: 1, kills: 5),
+    Player(
+        rang: 3,
+        name: 'Charlie',
+        waffe: Weapons.Basiliskenklaue,
+        exp: 2,
+        kills: 5),
+    Player(rang: 4, name: 'David', waffe: Weapons.Nachtdolch, exp: 2, kills: 5),
+    Player(
+        rang: 5, name: 'Eve', waffe: Weapons.Phoenixzepter, exp: 4, kills: 1),
+    Player(rang: 6, name: 'Frank', waffe: Weapons.Eisenfaust, exp: 5, kills: 0),
+    Player(
+        rang: 7, name: 'Grace', waffe: Weapons.GaiasKetten, exp: 6, kills: 6),
+    Player(
+        rang: 8, name: 'Heidi', waffe: Weapons.Windfaecher, exp: 7, kills: 7),
+    Player(rang: 9, name: 'Ivan', waffe: Weapons.Nebelstab, exp: 8, kills: 8),
+    Player(
+        rang: 10, name: 'Judy', waffe: Weapons.Felsenschwert, exp: 9, kills: 9),
+    Player(
+        rang: 11,
+        name: 'Kevin',
+        waffe: Weapons.Felsenschwert,
+        exp: 10,
+        kills: 10),
   ];
 
   void displayAddPlayerDialog(BuildContext context) {
@@ -52,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         );
       },
     ).then((_) {
-      setState(() {}); // Ensure the HomePage updates after the dialog is closed
+      setState(() {});
     });
   }
 
@@ -65,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         );
       },
     ).then((_) {
-      setState(() {}); // Ensure the HomePage updates after the dialog is closed
+      setState(() {});
     });
   }
 
@@ -94,144 +96,146 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                child: Table(
-                  columnWidths: const {
-                    0: FixedColumnWidth(40.0),
-                    1: FlexColumnWidth(),
-                    2: FixedColumnWidth(120.0),
-                    3: FixedColumnWidth(35.0),
-                    4: FixedColumnWidth(35.0),
-                    5: FixedColumnWidth(40.0),
-                    6: FixedColumnWidth(40.0),
-                  },
-                  border: TableBorder.all(color: Colors.white),
-                  children: [
-                    TableRow(
-                      decoration:
-                          const BoxDecoration(color: Colors.transparent),
-                      children: [
-                        TableCell(
-                          child: Container(
-                            height: _tableHeaderRowHeight,
-                            alignment: Alignment.center,
-                            child: const Text('Rang',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                        TableCell(
-                          child: Container(
-                            height: _tableHeaderRowHeight,
-                            alignment: Alignment.center,
-                            child: const Text('Name',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                        TableCell(
-                          child: Container(
-                            height: _tableHeaderRowHeight,
-                            alignment: Alignment.center,
-                            child: const Text('Waffe',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                        TableCell(
-                          child: Container(
-                            height: _tableHeaderRowHeight,
-                            alignment: Alignment.center,
-                            child: const Text('Lv',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                        TableCell(
-                          child: Container(
-                            height: _tableHeaderRowHeight,
-                            alignment: Alignment.center,
-                            child: const Text('HP',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                        TableCell(
-                          child: Container(
-                            height: _tableHeaderRowHeight,
-                            alignment: Alignment.center,
-                            child: const Text('EXP',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                        TableCell(
-                          child: Container(
-                            height: _tableHeaderRowHeight,
-                            alignment: Alignment.center,
-                            child: const Text('Kills',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    ..._playerList.map((player) {
-                      return TableRow(
-                        decoration: BoxDecoration(color: Colors.transparent),
+                child: SingleChildScrollView(
+                  child: Table(
+                    columnWidths: const {
+                      0: FixedColumnWidth(40.0),
+                      1: FlexColumnWidth(),
+                      2: FixedColumnWidth(120.0),
+                      3: FixedColumnWidth(35.0),
+                      4: FixedColumnWidth(35.0),
+                      5: FixedColumnWidth(40.0),
+                      6: FixedColumnWidth(40.0),
+                    },
+                    border: TableBorder.all(color: Colors.white),
+                    children: [
+                      TableRow(
+                        decoration:
+                            const BoxDecoration(color: Colors.transparent),
                         children: [
                           TableCell(
                             child: Container(
-                              height: _tableContentRowHeight,
+                              height: _tableHeaderRowHeight,
                               alignment: Alignment.center,
-                              child: Text(player.rang.toString(),
+                              child: const Text('Rang',
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
                           TableCell(
                             child: Container(
-                              height: _tableContentRowHeight,
+                              height: _tableHeaderRowHeight,
                               alignment: Alignment.center,
-                              child: Text(player.name,
+                              child: const Text('Name',
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
                           TableCell(
                             child: Container(
-                              height: _tableContentRowHeight,
+                              height: _tableHeaderRowHeight,
                               alignment: Alignment.center,
-                              child: Text(player.waffe.name,
+                              child: const Text('Waffe',
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
                           TableCell(
                             child: Container(
-                              height: _tableContentRowHeight,
+                              height: _tableHeaderRowHeight,
                               alignment: Alignment.center,
-                              child: Text(player.lv.toString(),
+                              child: const Text('Lv',
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
                           TableCell(
                             child: Container(
-                              height: _tableContentRowHeight,
+                              height: _tableHeaderRowHeight,
                               alignment: Alignment.center,
-                              child: Text(player.HP.toString(),
+                              child: const Text('HP',
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
                           TableCell(
                             child: Container(
-                              height: _tableContentRowHeight,
+                              height: _tableHeaderRowHeight,
                               alignment: Alignment.center,
-                              child: Text(player.exp.toString(),
+                              child: const Text('EXP',
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
                           TableCell(
                             child: Container(
-                              height: _tableContentRowHeight,
+                              height: _tableHeaderRowHeight,
                               alignment: Alignment.center,
-                              child: Text(player.kills.toString(),
+                              child: const Text('Kills',
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
                         ],
-                      );
-                    }),
-                  ],
+                      ),
+                      ..._playerList.map((player) {
+                        return TableRow(
+                          decoration: BoxDecoration(color: Colors.transparent),
+                          children: [
+                            TableCell(
+                              child: Container(
+                                height: _tableContentRowHeight,
+                                alignment: Alignment.center,
+                                child: Text(player.rang.toString(),
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                            TableCell(
+                              child: Container(
+                                height: _tableContentRowHeight,
+                                alignment: Alignment.center,
+                                child: Text(player.name,
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                            TableCell(
+                              child: Container(
+                                height: _tableContentRowHeight,
+                                alignment: Alignment.center,
+                                child: Text(player.waffe.name,
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                            TableCell(
+                              child: Container(
+                                height: _tableContentRowHeight,
+                                alignment: Alignment.center,
+                                child: Text(player.lv.toString(),
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                            TableCell(
+                              child: Container(
+                                height: _tableContentRowHeight,
+                                alignment: Alignment.center,
+                                child: Text(player.HP.toString(),
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                            TableCell(
+                              child: Container(
+                                height: _tableContentRowHeight,
+                                alignment: Alignment.center,
+                                child: Text(player.exp.toString(),
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                            TableCell(
+                              child: Container(
+                                height: _tableContentRowHeight,
+                                alignment: Alignment.center,
+                                child: Text(player.kills.toString(),
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                            ),
+                          ],
+                        );
+                      }),
+                    ],
+                  ),
                 ),
               ),
             ],
