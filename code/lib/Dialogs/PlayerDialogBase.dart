@@ -1,4 +1,4 @@
-import 'package:code/Models/Player.dart';
+import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
 
 abstract class PlayerDialogBase extends StatefulWidget {

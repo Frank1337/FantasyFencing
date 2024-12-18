@@ -1,4 +1,4 @@
-import 'package:code/Enumerations/Weapons.dart';
+import 'package:fantasy_fencing/Enumerations/Weapons.dart';
 
 class Player {
   final int rang;

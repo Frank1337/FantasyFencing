@@ -1,7 +1,7 @@
-import 'package:code/Dialogs/AddBattleDialog.dart';
-import 'package:code/Dialogs/AddPlayerDialog.dart';
-import 'package:code/Enumerations/Weapons.dart';
-import 'package:code/Models/Player.dart';
+import 'package:fantasy_fencing/Dialogs/AddBattleDialog.dart';
+import 'package:fantasy_fencing/Dialogs/AddPlayerDialog.dart';
+import 'package:fantasy_fencing/Enumerations/Weapons.dart';
+import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

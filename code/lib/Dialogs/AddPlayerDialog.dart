@@ -1,6 +1,6 @@
-import 'package:code/Dialogs/PlayerDialogBase.dart';
-import 'package:code/Enumerations/Weapons.dart';
-import 'package:code/Models/Player.dart';
+import 'package:fantasy_fencing/Dialogs/PlayerDialogBase.dart';
+import 'package:fantasy_fencing/Enumerations/Weapons.dart';
+import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

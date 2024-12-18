@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:code/Dialogs/PlayerDialogBase.dart';
-import 'package:code/Enumerations/Buffs.dart';
-import 'package:code/Models/Player.dart';
+import 'package:fantasy_fencing/Dialogs/PlayerDialogBase.dart';
+import 'package:fantasy_fencing/Enumerations/Buffs.dart';
+import 'package:fantasy_fencing/Models/Player.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
