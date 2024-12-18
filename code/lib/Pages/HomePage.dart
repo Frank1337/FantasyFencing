@@ -110,54 +110,61 @@ class _HomePageState extends State<HomePage> {
                       decoration:
                           const BoxDecoration(color: Colors.transparent),
                       children: [
-                        Container(
-                          height: _tableHeaderRowHeight,
-                          child: TableCell(
-                              child: Center(
-                                  child: Text('Rang',
-                                      style: TextStyle(color: Colors.white)))),
+                        TableCell(
+                          child: Container(
+                            height: _tableHeaderRowHeight,
+                            alignment: Alignment.center,
+                            child: const Text('Rang',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
-                        Container(
-                          height: _tableHeaderRowHeight,
-                          child: const TableCell(
-                              child: Center(
-                                  child: Text('Name',
-                                      style: TextStyle(color: Colors.white)))),
+                        TableCell(
+                          child: Container(
+                            height: _tableHeaderRowHeight,
+                            alignment: Alignment.center,
+                            child: const Text('Name',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
-                        Container(
-                          height: _tableHeaderRowHeight,
-                          child: const TableCell(
-                              child: Center(
-                                  child: Text('Waffe',
-                                      style: TextStyle(color: Colors.white)))),
+                        TableCell(
+                          child: Container(
+                            height: _tableHeaderRowHeight,
+                            alignment: Alignment.center,
+                            child: const Text('Waffe',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
-                        Container(
-                          height: _tableHeaderRowHeight,
-                          child: const TableCell(
-                              child: Center(
-                                  child: Text('Lv',
-                                      style: TextStyle(color: Colors.white)))),
+                        TableCell(
+                          child: Container(
+                            height: _tableHeaderRowHeight,
+                            alignment: Alignment.center,
+                            child: const Text('Lv',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
-                        Container(
-                          height: _tableHeaderRowHeight,
-                          child: const TableCell(
-                              child: Center(
-                                  child: Text('HP',
-                                      style: TextStyle(color: Colors.white)))),
+                        TableCell(
+                          child: Container(
+                            height: _tableHeaderRowHeight,
+                            alignment: Alignment.center,
+                            child: const Text('HP',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
-                        Container(
-                          height: _tableHeaderRowHeight,
-                          child: const TableCell(
-                              child: Center(
-                                  child: Text('EXP',
-                                      style: TextStyle(color: Colors.white)))),
+                        TableCell(
+                          child: Container(
+                            height: _tableHeaderRowHeight,
+                            alignment: Alignment.center,
+                            child: const Text('EXP',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
-                        Container(
-                          height: _tableHeaderRowHeight,
-                          child: const TableCell(
-                              child: Center(
-                                  child: Text('Kills',
-                                      style: TextStyle(color: Colors.white)))),
+                        TableCell(
+                          child: Container(
+                            height: _tableHeaderRowHeight,
+                            alignment: Alignment.center,
+                            child: const Text('Kills',
+                                style: TextStyle(color: Colors.white)),
+                          ),
                         ),
                       ],
                     ),
@@ -165,51 +172,58 @@ class _HomePageState extends State<HomePage> {
                       return TableRow(
                         decoration: BoxDecoration(color: Colors.transparent),
                         children: [
-                          Container(
-                            height: _tableContentRowHeight,
-                            child: Center(
+                          TableCell(
+                            child: Container(
+                              height: _tableContentRowHeight,
+                              alignment: Alignment.center,
                               child: Text(player.rang.toString(),
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
-                          Container(
-                            height: _tableContentRowHeight,
-                            child: Center(
+                          TableCell(
+                            child: Container(
+                              height: _tableContentRowHeight,
+                              alignment: Alignment.center,
                               child: Text(player.name,
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
-                          Container(
-                            height: _tableContentRowHeight,
-                            child: Center(
+                          TableCell(
+                            child: Container(
+                              height: _tableContentRowHeight,
+                              alignment: Alignment.center,
                               child: Text(player.waffe.name,
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
-                          Container(
-                            height: _tableContentRowHeight,
-                            child: Center(
+                          TableCell(
+                            child: Container(
+                              height: _tableContentRowHeight,
+                              alignment: Alignment.center,
                               child: Text(player.lv.toString(),
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
-                          Container(
-                            height: _tableContentRowHeight,
-                            child: Center(
+                          TableCell(
+                            child: Container(
+                              height: _tableContentRowHeight,
+                              alignment: Alignment.center,
                               child: Text(player.HP.toString(),
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
-                          Container(
-                            height: _tableContentRowHeight,
-                            child: Center(
+                          TableCell(
+                            child: Container(
+                              height: _tableContentRowHeight,
+                              alignment: Alignment.center,
                               child: Text(player.exp.toString(),
                                   style: TextStyle(color: Colors.white)),
                             ),
                           ),
-                          Container(
-                            height: _tableContentRowHeight,
-                            child: Center(
+                          TableCell(
+                            child: Container(
+                              height: _tableContentRowHeight,
+                              alignment: Alignment.center,
                               child: Text(player.kills.toString(),
                                   style: TextStyle(color: Colors.white)),
                             ),
