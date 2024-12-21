@@ -104,8 +104,12 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           Positioned.fill(
-            child:
-                Image.asset("images/fantasy_fencer_2.jpg", fit: BoxFit.cover),
+            child: Opacity(
+                opacity: 0.6,
+                child: Image.asset(
+                  "images/fantasy_fencer_2.jpg",
+                  fit: BoxFit.cover,
+                )),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
