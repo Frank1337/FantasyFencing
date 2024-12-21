@@ -192,14 +192,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                       ..._playerList.map((player) {
                         return TableRow(
-                          decoration: BoxDecoration(color: Colors.transparent),
+                          decoration: const BoxDecoration(color: Colors.transparent),
                           children: [
                             TableCell(
                               child: Container(
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.rang.toString(),
-                                    style: TextStyle(color: Colors.white)),
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -207,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.name,
-                                    style: TextStyle(color: Colors.white)),
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -220,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                                   height: _tableContentRowHeight,
                                   alignment: Alignment.center,
                                   child: Text(player.waffe.name,
-                                      style: TextStyle(color: Colors.white)),
+                                      style: const TextStyle(color: Colors.white)),
                                 ),
                               ),
                             ),
@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.lv.toString(),
-                                    style: TextStyle(color: Colors.white)),
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -237,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.HP.toString(),
-                                    style: TextStyle(color: Colors.white)),
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -245,7 +245,7 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.exp.toString(),
-                                    style: TextStyle(color: Colors.white)),
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -253,7 +253,7 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.kills.toString(),
-                                    style: TextStyle(color: Colors.white)),
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                             ),
                           ],
