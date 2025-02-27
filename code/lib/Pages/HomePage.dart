@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                       2: FixedColumnWidth(120.0),
                       3: FixedColumnWidth(35.0),
                       4: FixedColumnWidth(35.0),
-                      5: FixedColumnWidth(40.0),
+                      5: FixedColumnWidth(45.0),
                       6: FixedColumnWidth(40.0),
                     },
                     border: TableBorder.all(color: Colors.white),
@@ -192,14 +192,16 @@ class _HomePageState extends State<HomePage> {
                       ),
                       ..._playerList.map((player) {
                         return TableRow(
-                          decoration: const BoxDecoration(color: Colors.transparent),
+                          decoration:
+                              const BoxDecoration(color: Colors.transparent),
                           children: [
                             TableCell(
                               child: Container(
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.rang.toString(),
-                                    style: const TextStyle(color: Colors.white)),
+                                    style:
+                                        const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -207,7 +209,8 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.name,
-                                    style: const TextStyle(color: Colors.white)),
+                                    style:
+                                        const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -220,7 +223,8 @@ class _HomePageState extends State<HomePage> {
                                   height: _tableContentRowHeight,
                                   alignment: Alignment.center,
                                   child: Text(player.waffe.name,
-                                      style: const TextStyle(color: Colors.white)),
+                                      style:
+                                          const TextStyle(color: Colors.white)),
                                 ),
                               ),
                             ),
@@ -229,7 +233,8 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.lv.toString(),
-                                    style: const TextStyle(color: Colors.white)),
+                                    style:
+                                        const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -237,15 +242,18 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.HP.toString(),
-                                    style: const TextStyle(color: Colors.white)),
+                                    style:
+                                        const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
                               child: Container(
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
-                                child: Text(player.exp.toString(),
-                                    style: const TextStyle(color: Colors.white)),
+                                child: Text(
+                                    "${player.exp}/${player.totalExpNeededTillNextLv}",
+                                    style:
+                                        const TextStyle(color: Colors.white)),
                               ),
                             ),
                             TableCell(
@@ -253,7 +261,8 @@ class _HomePageState extends State<HomePage> {
                                 height: _tableContentRowHeight,
                                 alignment: Alignment.center,
                                 child: Text(player.kills.toString(),
-                                    style: const TextStyle(color: Colors.white)),
+                                    style:
+                                        const TextStyle(color: Colors.white)),
                               ),
                             ),
                           ],

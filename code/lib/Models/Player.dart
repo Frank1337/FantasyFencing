@@ -29,6 +29,12 @@ class Player {
     return level - 1;
   }
 
+  int get totalExpNeededTillNextLv {
+    int currentLv = lv;
+    int totalExpTillNextLv = currentLv * (currentLv + 1) ~/ 2;
+    return totalExpTillNextLv;
+  }
+
   int get HP {
     return 2 + lv;
   }
